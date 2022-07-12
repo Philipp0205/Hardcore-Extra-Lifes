@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "hardcore_extra_lives",
   "version": "${version}",
 
-  "name": "Example Mod",
+  "name": "Hardcore Extra Lives Mod",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
-    "Me!"
+    "Philipp Kurrle"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -14,16 +14,16 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/hardcore_extra_lives/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.philipp.hardcore_extra_lives.HardcoreExtraLivesMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "hardcore_extra_lives.mixins.json"
   ],
 
   "depends": {

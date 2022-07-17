@@ -22,7 +22,6 @@ public class RestoreLivesCommand {
         return 1;
     }
 
-
 //    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, boolean dedicated) {
 //        dispatcher.register(CommandManager.literal("home")
 //                .then(CommandManager.literal("return").executes(ReturnHomeCommand::run)));

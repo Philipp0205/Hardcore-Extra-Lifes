@@ -21,7 +21,7 @@ public class DeathStorage {
 
     public DeathStorage() {
         this.deathLogFile = FabricLoader.getInstance().getGameDir().resolve("death_log.dat").toFile();
-        initRemainingLives();
+//        initRemainingLives();
     }
 
     private void initRemainingLives() {
@@ -47,14 +47,11 @@ public class DeathStorage {
     }
 
     public void updateRemainingLives(int amount) {
+        int remainingLives = getRemainingLivesFromFile(this.deathLogFile) + amount;
 
-
-        int remainingLives = getRemainingLives() + amount;
-
-        System.out.println("decreaseRemainingLives: from " + getRemainingLives() + " to " + remainingLives);
+        System.out.println("decreaseRemainingLives: from " + getRemainingLivesFromFile(this.deathLogFile) + " to " + remainingLives);
         setRemainingLives(this.deathLogFile, remainingLives);
     }
-
 
 
     void saveRemainingLivesToFile(File file, int remainingLives) {
@@ -75,14 +72,17 @@ public class DeathStorage {
      * @param file the file to read from
      * @return the NbtCompound containing the number of remaining lives
      */
-    public int getRemainingLivesFromFile(File file) {
+    private int getRemainingLivesFromFile(File file) {
         NbtCompound nbtCompound = file.exists() ? loadNbtFromExistingFile(file) : createNewNbtCompound();
 
         int remainingLives = nbtCompound.getInt("RemainingLives");
         LOGGER.info("Remaining lives: " + remainingLives);
 
         return remainingLives;
+    }
 
+    public int getReaminingLives() {
+        return getRemainingLivesFromFile(this.deathLogFile);
     }
 
     /**
@@ -114,7 +114,4 @@ public class DeathStorage {
         return deathNbt;
     }
 
-    public int getRemainingLives() {
-        return this.getRemainingLivesFromFile(this.deathLogFile);
-    }
 }
